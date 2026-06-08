@@ -124,10 +124,20 @@ Filled in as snapshots are curated. One row per source contribution.
 
 | Source | URL | Last accessed | Data category | Records contributed |
 | --- | --- | --- | --- | --- |
-| _(empty — populated during v1 data curation)_ | | | | |
+| Constitution of Kenya 2010, First Schedule | http://kenyalaw.org/lex/actview.xql?actid=Const2010 | 2026-06-08 | Counties | 47 |
+| National Police Service | https://www.nationalpolice.go.ke | 2026-06-08 | National emergency numbers | 1 |
+| OSAC Kenya Country Security Report | https://www.osac.gov | 2026-06-08 | National emergency numbers | 3 |
+| Kenya Red Cross Society | https://www.redcross.or.ke | 2026-06-08 | National emergency numbers | 1 |
+| Healthcare Assistance Kenya (HAK) | https://hakgbv1195.org | 2026-06-08 | National emergency numbers | 1 |
+| Childline Kenya / Dept of Children Services | https://childlinekenya.co.ke | 2026-06-08 | National emergency numbers | 1 |
+| Pharmacy and Poisons Board | https://web.pharmacyboardkenya.org/contacts/ | 2026-06-08 | Poison control | 1 |
 
 ## Known limitations & gaps
 
-_Empty for now. Populated after curation — this section will honestly document
-coverage gaps, counties with thin data, records pending re-verification, and any
-known accuracy caveats._
+- Kenya lacks a dedicated 24/7 poison control hotline. The PPB entry is included
+  as the regulatory authority but is not an emergency service. For poisoning
+  emergencies, general emergency numbers (999, 112) and the Kenya Red Cross
+  (1199) are the appropriate contacts.
+- Per-county emergency contacts are not yet curated. The
+  `emergency_contacts_v1.json` file is intentionally empty and will be populated
+  county-by-county with verified data in a follow-up release.
