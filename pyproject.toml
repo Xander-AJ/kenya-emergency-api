@@ -1,0 +1,75 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kenya-emergency"
+version = "0.1.0"
+description = "Transport-agnostic library and self-hostable FastAPI server for Kenyan emergency contact data, with provenance baked into every record."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "kenya-emergency-api contributors" }]
+keywords = ["kenya", "emergency", "api", "fastapi", "pydantic"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = [
+    "pydantic>=2",
+    "pydantic-settings",
+    "phonenumbers>=8.13",
+    "fastapi",
+    "uvicorn[standard]",
+    "httpx",
+]
+
+[project.optional-dependencies]
+supabase = ["supabase>=2.0"]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-asyncio",
+    "ruff",
+    "mypy",
+]
+
+[project.urls]
+Homepage = "https://github.com/kenya-emergency-api/kenya-emergency-api"
+Repository = "https://github.com/kenya-emergency-api/kenya-emergency-api"
+Issues = "https://github.com/kenya-emergency-api/kenya-emergency-api/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kenya_emergency"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"data/snapshots" = "kenya_emergency/data/snapshots"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+
+[tool.mypy]
+strict = true
+python_version = "3.11"
+files = ["src", "tests"]
+
+[[tool.mypy.overrides]]
+module = ["supabase", "supabase.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "--cov=kenya_emergency --cov-report=term-missing"
