@@ -1,6 +1,9 @@
-"""Public library entry point.
+"""Public client surface — re-exports EmergencyService for backwards compat.
 
-Exposes ``EmergencyService`` for direct, in-process use by Python callers.
+The canonical import is ``from kenya_emergency import EmergencyService``; this
+module is kept because its path appears in the original project layout.
 """
 
-# TODO v1 implementation
+from kenya_emergency.services.emergency_service import EmergencyService
+
+__all__ = ["EmergencyService"]

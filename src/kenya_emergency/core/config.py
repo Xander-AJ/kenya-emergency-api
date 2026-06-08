@@ -33,6 +33,9 @@ class Settings(BaseSettings):
         db_path: Filesystem path to the SQLite database file. Defaults to the
             database bundled with the package, which may not exist until it is
             built from the vendored snapshots.
+        snapshot_dir: Directory of JSON snapshots used to build the SQLite
+            database on first use. Defaults to the snapshots bundled with the
+            package.
         storage_adapter: Which storage backend to use.
         supabase_url: Supabase project URL. Required when
             ``storage_adapter == "supabase"``.
@@ -48,6 +51,7 @@ class Settings(BaseSettings):
     )
 
     db_path: Path = DEFAULT_DB_PATH
+    snapshot_dir: Path = DEFAULT_SNAPSHOT_DIR
     storage_adapter: Literal["sqlite", "supabase"] = "sqlite"
     supabase_url: HttpUrl | None = None
     supabase_key: str | None = None
