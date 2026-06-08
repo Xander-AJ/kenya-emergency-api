@@ -86,6 +86,4 @@ def normalize_category(value: ContactCategory | str | None) -> ContactCategory |
         return ContactCategory(key)
     except ValueError:
         valid = ", ".join(category.value for category in ContactCategory)
-        raise ValueError(
-            f"unknown contact category {value!r}; expected one of: {valid}"
-        ) from None
+        raise ValueError(f"unknown contact category {value!r}; expected one of: {valid}") from None

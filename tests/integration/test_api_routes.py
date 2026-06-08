@@ -85,9 +85,7 @@ def test_county_contacts_filter(client: TestClient) -> None:
 
 
 def test_county_contacts_unknown_category_returns_400(client: TestClient) -> None:
-    response = client.get(
-        "/v1/counties/047/contacts", params={"category": "fire brigade"}
-    )
+    response = client.get("/v1/counties/047/contacts", params={"category": "fire brigade"})
     assert response.status_code == 400
     _assert_error_shape(response.json(), "bad_request")
 
@@ -159,9 +157,7 @@ def test_metadata(client: TestClient) -> None:
 
 def test_health_does_not_require_storage(tmp_path: Path) -> None:
     """/health stays green even when storage is misconfigured (never queried)."""
-    broken = Settings(
-        db_path=tmp_path / "nope.db", snapshot_dir=tmp_path / "missing-dir"
-    )
+    broken = Settings(db_path=tmp_path / "nope.db", snapshot_dir=tmp_path / "missing-dir")
     client = TestClient(create_app(settings=broken))
 
     response = client.get("/health")
@@ -198,9 +194,7 @@ def test_openapi_schema(client: TestClient) -> None:
 
 def test_storage_unavailable_returns_503(tmp_path: Path) -> None:
     """A data request with no snapshots surfaces as 503 in the consistent shape."""
-    broken = Settings(
-        db_path=tmp_path / "nope.db", snapshot_dir=tmp_path / "missing-dir"
-    )
+    broken = Settings(db_path=tmp_path / "nope.db", snapshot_dir=tmp_path / "missing-dir")
     client = TestClient(create_app(settings=broken))
 
     response = client.get("/v1/counties")
@@ -209,9 +203,7 @@ def test_storage_unavailable_returns_503(tmp_path: Path) -> None:
     _assert_error_shape(response.json(), "storage_unavailable")
 
 
-def test_all_exception_handlers_share_shape(
-    tmp_path: Path, snapshot_dir: Path
-) -> None:
+def test_all_exception_handlers_share_shape(tmp_path: Path, snapshot_dir: Path) -> None:
     """Each of the four exception types yields the same JSON error body shape."""
     app: FastAPI = create_app(settings=_settings(tmp_path, snapshot_dir))
 

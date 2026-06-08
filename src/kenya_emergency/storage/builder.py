@@ -43,9 +43,7 @@ class _TableSpec(NamedTuple):
 
 
 _TABLE_SPECS: tuple[_TableSpec, ...] = (
-    _TableSpec(
-        "counties_v1.json", "counties", County, _serde.INSERT_COUNTY, _serde.county_params
-    ),
+    _TableSpec("counties_v1.json", "counties", County, _serde.INSERT_COUNTY, _serde.county_params),
     _TableSpec(
         "emergency_contacts_v1.json",
         "emergency_contacts",
@@ -99,9 +97,7 @@ def _load_snapshot(snapshot_dir: Path, spec: _TableSpec) -> list[Any]:
         try:
             records.append(spec.model.model_validate(item))
         except ValidationError as exc:
-            raise StorageError(
-                f"Invalid record in {path} at index {index}: {exc}"
-            ) from exc
+            raise StorageError(f"Invalid record in {path} at index {index}: {exc}") from exc
     return records
 
 
@@ -124,9 +120,7 @@ def _write_database(
         for spec in _TABLE_SPECS:
             records = loaded[spec.filename]
             if records:
-                conn.executemany(
-                    spec.insert_sql, [spec.to_params(record) for record in records]
-                )
+                conn.executemany(spec.insert_sql, [spec.to_params(record) for record in records])
         conn.executemany(
             "INSERT INTO _metadata (key, value) VALUES (:key, :value)",
             [

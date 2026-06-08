@@ -47,9 +47,7 @@ def test_missing_snapshot_file_raises(tmp_path: Path) -> None:
     assert "counties_v1.json" in str(exc_info.value)
 
 
-def test_invalid_record_raises_with_file_and_index(
-    tmp_path: Path, snapshot_dir: Path
-) -> None:
+def test_invalid_record_raises_with_file_and_index(tmp_path: Path, snapshot_dir: Path) -> None:
     """An invalid record raises StorageError naming the file and offending index."""
     snaps = _copy_snapshots(snapshot_dir, tmp_path / "snaps")
     (snaps / "emergency_contacts_v1.json").write_text(

@@ -16,9 +16,7 @@ router = APIRouter(prefix="/emergency", tags=["emergency"])
 
 @router.get("/national", response_model=list[NationalNumber])
 def list_national_numbers(
-    category: ContactCategory | None = Query(
-        default=None, description="Optional category filter."
-    ),
+    category: ContactCategory | None = Query(default=None, description="Optional category filter."),
     service: EmergencyService = Depends(get_service),
 ) -> list[NationalNumber]:
     """Return national emergency numbers, optionally filtered by category.

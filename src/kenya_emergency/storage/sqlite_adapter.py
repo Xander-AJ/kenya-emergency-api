@@ -80,9 +80,7 @@ class SQLiteAdapter(StorageAdapter):
     def get_county(self, code: str) -> County:
         """Return the county with the given code, or raise DataNotFoundError."""
         with closing(self._connect()) as conn:
-            row = conn.execute(
-                "SELECT * FROM counties WHERE code = ?", (code,)
-            ).fetchone()
+            row = conn.execute("SELECT * FROM counties WHERE code = ?", (code,)).fetchone()
         if row is None:
             raise DataNotFoundError(f"No county with code {code!r}")
         return _serde.county_from_row(row)

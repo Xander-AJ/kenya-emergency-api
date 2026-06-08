@@ -19,9 +19,7 @@ def list_counties(service: EmergencyService = Depends(get_service)) -> list[Coun
 
 
 @router.get("/by-name/{name}", response_model=County)
-def get_county_by_name(
-    name: str, service: EmergencyService = Depends(get_service)
-) -> County:
+def get_county_by_name(name: str, service: EmergencyService = Depends(get_service)) -> County:
     """Return a county matched by name (case-insensitive).
 
     Raises ``DataNotFoundError`` (404) if no county name matches.
@@ -42,9 +40,7 @@ def get_county(code: str, service: EmergencyService = Depends(get_service)) -> C
 @router.get("/{code}/contacts", response_model=list[EmergencyContact])
 def get_county_contacts(
     code: str,
-    category: ContactCategory | None = Query(
-        default=None, description="Optional category filter."
-    ),
+    category: ContactCategory | None = Query(default=None, description="Optional category filter."),
     service: EmergencyService = Depends(get_service),
 ) -> list[EmergencyContact]:
     """Return a county's emergency contacts, optionally filtered by category.
