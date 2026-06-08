@@ -1,0 +1,30 @@
+[
+  {
+    "service_name": "Police Emergency",
+    "short_code": "999",
+    "alternate_numbers": [],
+    "category": "police",
+    "description": "National police, fire, and ambulance emergency line.",
+    "provenance": {
+      "source": "Kenya Police Service",
+      "source_url": "https://www.nationalpolice.go.ke/",
+      "last_verified_at": "2026-01-11",
+      "verification_method": "official_publication",
+      "notes": null
+    }
+  },
+  {
+    "service_name": "Kenya Red Cross",
+    "short_code": "1199",
+    "alternate_numbers": ["0703037000"],
+    "category": "redcross",
+    "description": "Kenya Red Cross emergency operations centre.",
+    "provenance": {
+      "source": "Kenya Red Cross Society",
+      "source_url": "https://www.redcross.or.ke/",
+      "last_verified_at": "2026-01-16",
+      "verification_method": "website_check",
+      "notes": "Toll-free 1199"
+    }
+  }
+]

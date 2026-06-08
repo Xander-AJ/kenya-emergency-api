@@ -1,0 +1,58 @@
+[
+  {
+    "county_code": "047",
+    "category": "police",
+    "name": "Nairobi Central Police Station",
+    "phone_numbers": ["0712345678"],
+    "notes": "Operations desk",
+    "provenance": {
+      "source": "Kenya Police Service",
+      "source_url": "https://www.nationalpolice.go.ke/",
+      "last_verified_at": "2026-01-12",
+      "verification_method": "manual_call",
+      "notes": null
+    }
+  },
+  {
+    "county_code": "047",
+    "category": "fire",
+    "name": "Nairobi County Fire Brigade",
+    "phone_numbers": ["0202222222"],
+    "notes": null,
+    "provenance": {
+      "source": "Nairobi City County",
+      "source_url": "https://nairobi.go.ke/",
+      "last_verified_at": "2026-01-14",
+      "verification_method": "website_check",
+      "notes": null
+    }
+  },
+  {
+    "county_code": "001",
+    "category": "police",
+    "name": "Mombasa Central Police Station",
+    "phone_numbers": ["0722000000"],
+    "notes": null,
+    "provenance": {
+      "source": "Kenya Police Service",
+      "source_url": "https://www.nationalpolice.go.ke/",
+      "last_verified_at": "2026-01-12",
+      "verification_method": "manual_call",
+      "notes": null
+    }
+  },
+  {
+    "county_code": "001",
+    "category": "fire",
+    "name": "Mombasa County Fire Brigade",
+    "phone_numbers": ["0733000000"],
+    "notes": null,
+    "provenance": {
+      "source": "Mombasa County",
+      "source_url": "https://mombasa.go.ke/",
+      "last_verified_at": "2026-01-13",
+      "verification_method": "website_check",
+      "notes": null
+    }
+  }
+]
